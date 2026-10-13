@@ -1,7 +1,7 @@
 /* ====== CONFIGURACIÓN: edita solo este bloque ====== */
 const CONFIG = {
   fecha: "2026-10-24T19:30:00-06:00", // Costa Rica (UTC-6)
-  whatsapp: "50671402649", // Número de Gretel: código de país + número, sin + ni espacios
+  whatsapp: "50687202676", // Número de Gretel: código de país + número, sin + ni espacios
   cumpleanera: "Gretel Ramirez",
   lugar: "El Circo Mexicano",
   mapsCorto: "https://maps.app.goo.gl/JMZvwQEWieqJfEha8",
