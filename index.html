@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cumpleaños de Gretel Ramirez · Circo Mexicano</title>
+    <meta
+      name="description"
+      content="Estás invitado al cumpleaños de Gretel Ramirez: sábado 24 de octubre, 7:30 pm, en Circo Mexicano."
+    />
+    <meta name="theme-color" content="#0f0b0d" />
+    <meta property="og:title" content="Cumpleaños de Gretel Ramirez" />
+    <meta
+      property="og:description"
+      content="Sábado 24 de octubre · 7:30 pm · Circo Mexicano. Ven de negro."
+    />
+    <meta property="og:image" content="img/og.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Rye&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="carpa" aria-hidden="true"></div>
+      <div class="hero-in">
+        <img
+          class="foto"
+          src="img/gretel.jpg"
+          alt="Gretel Ramirez"
+          width="140"
+          height="140"
+          onerror="this.remove()"
+        />
+        <p class="intro">Estás invitado a la función de cumpleaños de</p>
+        <h1>Gretel Ramirez</h1>
+        <p class="lema">
+          Una noche de comida mexicana y canciones de despecho. Ven de negro.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="cuenta" aria-labelledby="t-cuenta">
+        <h2 id="t-cuenta">Faltan para la función</h2>
+        <div class="reloj" id="reloj" role="timer" aria-live="off">
+          <div><b id="d">--</b><span>días</span></div>
+          <div><b id="h">--</b><span>horas</span></div>
+          <div><b id="m">--</b><span>min</span></div>
+          <div><b id="s">--</b><span>seg</span></div>
+        </div>
+        <p class="fin" id="fin" hidden>
+          ¡La función ya empezó! Corre a Circo Mexicano.
+        </p>
+      </section>
+
+      <section class="boleto-wrap" aria-label="Detalles del evento">
+        <article class="boleto">
+          <div class="b-top">
+            <p class="b-fecha">Sábado 24 de octubre</p>
+            <p class="b-hora">7:30 pm</p>
+          </div>
+          <dl class="b-bot">
+            <div>
+              <dt>Lugar</dt>
+              <dd>El Circo Mexicano</dd>
+            </div>
+            <div>
+              <dt>Comida</dt>
+              <dd>Mexicana</dd>
+            </div>
+            <div>
+              <dt>Ambiente</dt>
+              <dd>Canciones de despecho</dd>
+            </div>
+            <div>
+              <dt>Vestimenta</dt>
+              <dd>Negro</dd>
+            </div>
+          </dl>
+        </article>
+      </section>
+
+      <section class="rsvp" aria-labelledby="t-rsvp">
+        <h2 id="t-rsvp">¿Vienes a cantar?</h2>
+        <p>
+          Confírmale a Gretel por WhatsApp para que te guarde un lugar en la
+          mesa.
+        </p>
+        <label for="nombre">Tu nombre</label>
+        <input
+          id="nombre"
+          type="text"
+          autocomplete="name"
+          placeholder="Ej: Ana Mora"
+          maxlength="40"
+        />
+        <a id="btn-wa" class="btn wa" href="#" target="_blank" rel="noopener"
+          >Confirmar por WhatsApp</a
+        >
+      </section>
+
+      <section class="lugar" aria-labelledby="t-lugar">
+        <h2 id="t-lugar">Cómo llegar</h2>
+        <div class="mapa">
+          <iframe
+            id="mapa"
+            title="Mapa de Circo Mexicano"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="rutas">
+          <a
+            id="btn-gmaps"
+            class="btn sec"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            >Ruta en Google Maps</a
+          >
+          <a
+            id="btn-waze"
+            class="btn sec"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            >Ruta en Waze</a
+          >
+        </div>
+      </section>
+
+      <section class="faq" aria-labelledby="t-faq">
+        <h2 id="t-faq">Preguntas frecuentes</h2>
+        <details name="faq">
+          <summary>¿Hay dress code?</summary>
+          <p>Sí: todo de negro. Va con el tema de la noche.</p>
+        </details>
+        <details name="faq">
+          <summary>¿Hay un consumo mínimo?</summary>
+          <p>Sí, el consumo mínimo es de ₡6.000 por persona.</p>
+        </details>
+        <details name="faq">
+          <summary>¿Hay parqueo?</summary>
+          <p>Sí, el establecimiento cuenta con parqueo.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <p>Gretel Ramirez · 24 de octubre · Circo Mexicano</p>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
