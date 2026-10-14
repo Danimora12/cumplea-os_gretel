@@ -1,7 +1,7 @@
 /* ====== CONFIGURACIÓN: edita solo este bloque ====== */
 const CONFIG = {
   fecha: "2026-10-24T19:30:00-06:00", // Costa Rica (UTC-6)
-  whatsapp: "506XXXXXXXX", // Número de Gretel: código de país + número, sin + ni espacios
+  whatsapp: "50687202676", // Número de Gretel: código de país + número, sin + ni espacios
   musica: "audio/cancion.mp3", // deja "" para quitar portada y música
   volumen: 0.5,
   escena: "img/escena.webp", // ilustración de la sección de WhatsApp (si no existe, se usa el dibujo SVG)
