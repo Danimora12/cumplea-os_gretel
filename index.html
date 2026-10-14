@@ -3,19 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Cumpleaños de Gretel Ramirez · Circo Mexicano</title>
+    <title>Cumpleaños de Grethel Ramírez · Circo Mexicano</title>
     <meta
       name="description"
       content="Estás invitado al cumpleaños de Gretel Ramirez: sábado 24 de octubre, 7:30 pm, en Circo Mexicano."
     />
-    <meta name="theme-color" content="#0f0b0d" />
-    <meta property="og:title" content="Cumpleaños de Gretel Ramirez" />
+    <meta name="theme-color" content="#12080c" />
+    <meta property="og:title" content="Cumpleaños de Grethel Ramírez" />
     <meta
       property="og:description"
       content="Sábado 24 de octubre · 7:30 pm · Circo Mexicano. Ven de negro."
     />
-    <meta property="og:image" content="https://happybirthdaygretel.netlify.app/img/og.jpg"/>
-    <meta property="og:url" content="https://happybirthdaygretel.netlify.app"
+    <meta
+      property="og:image"
+      content="https://happybirthdaygretel.netlify.app/img/og.jpg"
+    />
+    <meta property="og:url" content="https://happybirthdaygretel.netlify.app" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,24 +29,184 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <noscript
+      ><style>
+        .portada {
+          display: none !important;
+        }
+      </style></noscript
+    >
+    <div
+      class="portada"
+      id="portada"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="t-portada"
+    >
+      <div class="portada-in">
+        <svg class="corazon" viewBox="0 0 64 60" aria-hidden="true">
+          <path
+            d="M32 57C4 38 10 8 25 8c5 0 7 4 7 7 0-3 2-7 7-7 15 0 21 30-7 49z"
+            fill="#ff2d87"
+          />
+        </svg>
+        <p class="intro">Tienes una invitación de</p>
+        <h2 id="t-portada">Grethel</h2>
+        <button class="btn rosa" id="entrar" type="button">
+          Abrir invitación
+        </button>
+        <button class="solo-link" id="entrar-mudo" type="button">
+          Entrar sin música
+        </button>
+      </div>
+    </div>
+    <audio id="audio" loop preload="none"></audio>
+    <button
+      class="musica"
+      id="musica"
+      type="button"
+      aria-pressed="false"
+      aria-label="Activar música"
+      hidden
+    >
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+        <path d="M3 9v6h4l5 4V5L7 9z" fill="currentColor" />
+        <path
+          class="on"
+          d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          class="off"
+          d="M16 9l5 6m0-6l-5 6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
     <header class="hero">
-      <div class="carpa" aria-hidden="true"></div>
+      <svg
+        class="papel"
+        aria-hidden="true"
+        focusable="false"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="rombos"
+            width="9"
+            height="9"
+            patternUnits="userSpaceOnUse"
+            patternTransform="rotate(45)"
+          >
+            <rect width="9" height="9" fill="#fff" />
+            <rect x="2.6" y="2.6" width="3.8" height="3.8" fill="#000" />
+          </pattern>
+          <mask id="calado">
+            <rect width="56" height="76" fill="url(#rombos)" />
+            <circle cx="28" cy="33" r="15" fill="#fff" />
+            <path
+              d="M28 44C14 34 18 22 24 22c3 0 4 2 4 4 0-2 1-4 4-4 6 0 10 12-4 22z"
+              fill="#000"
+            />
+            <rect y="58" width="56" height="18" fill="url(#rombos)" />
+            <rect y="58" width="56" height="3" fill="#fff" />
+          </mask>
+          <symbol id="flag" viewBox="0 0 56 76" overflow="visible">
+            <path
+              mask="url(#calado)"
+              fill="currentColor"
+              d="M0 0H56V68L50.4 76 44.8 68 39.2 76 33.6 68 28 76 22.4 68 16.8 76 11.2 68 5.6 76 0 68Z"
+            />
+          </symbol>
+          <pattern
+            id="tira"
+            width="360"
+            height="112"
+            patternUnits="userSpaceOnUse"
+          >
+            <path d="M0 8H360" stroke="#f4b223" stroke-width="2" />
+            <use
+              href="#flag"
+              x="2"
+              y="8"
+              width="56"
+              height="76"
+              style="color: #ff2d87"
+              transform="rotate(-3 30 8)"
+            />
+            <use
+              href="#flag"
+              x="62"
+              y="8"
+              width="56"
+              height="76"
+              style="color: #d4182f"
+              transform="rotate(3 90 8)"
+            />
+            <use
+              href="#flag"
+              x="122"
+              y="8"
+              width="56"
+              height="76"
+              style="color: #ff7eb3"
+              transform="rotate(-3 150 8)"
+            />
+            <use
+              href="#flag"
+              x="182"
+              y="8"
+              width="56"
+              height="76"
+              style="color: #ff5a4d"
+              transform="rotate(3 210 8)"
+            />
+            <use
+              href="#flag"
+              x="242"
+              y="8"
+              width="56"
+              height="76"
+              style="color: #a3123a"
+              transform="rotate(-3 270 8)"
+            />
+            <use
+              href="#flag"
+              x="302"
+              y="8"
+              width="56"
+              height="76"
+              style="color: #f4b223"
+              transform="rotate(3 330 8)"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="112" fill="url(#tira)" />
+      </svg>
       <div class="hero-in">
         <img
           class="foto"
-          src="img/gretel.jpg"
+          src="img/gretel.webp"
           alt="Gretel Ramirez"
           width="140"
           height="140"
           onerror="this.remove()"
         />
-        <p class="intro">Estás invitado al cumpleaños de</p>
-        <h1>Gretel Ramirez</h1>
+        <p class="intro">Veni a Compartir conmigo</p>
+        <h1>Gre</h1>
         <p class="lema">
-          Una noche de comida mexicana, buenos momentos y canciones hasta el amanecer. Ven de negro.
+          Quiero celebrar mi cumple con tu hermosa presencia una noche de chicas
+          para pasarla bien, cantar y bailar.
         </p>
       </div>
     </header>
+    <div class="bombillos" aria-hidden="true"></div>
 
     <main>
       <section class="cuenta" aria-labelledby="t-cuenta">
@@ -70,10 +234,6 @@
               <dd>El Circo Mexicano</dd>
             </div>
             <div>
-              <dt>Comida</dt>
-              <dd>Mexicana</dd>
-            </div>
-            <div>
               <dt>Ambiente</dt>
               <dd>Canciones de despecho</dd>
             </div>
@@ -86,6 +246,53 @@
       </section>
 
       <section class="rsvp" aria-labelledby="t-rsvp">
+        <svg
+          class="escena"
+          viewBox="0 0 300 180"
+          aria-hidden="true"
+          focusable="false"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g fill="#d4182f">
+            <path
+              id="cor"
+              d="M40 70C22 56 28 38 36 38c4 0 4 3 4 5 0-2 1-5 5-5 8 0 14 18-5 32z"
+            />
+            <use href="#cor" transform="translate(228 -12) scale(.8)" />
+            <use href="#cor" transform="translate(150 98) scale(.6)" />
+          </g>
+          <g id="vaso">
+            <path
+              d="M62 88h50l-7 66H69z"
+              fill="#fff"
+              fill-opacity=".12"
+              stroke="#f6ecdc"
+              stroke-opacity=".6"
+              stroke-width="2"
+            />
+            <path d="M65 110h44l-4 44H69z" fill="#e8901f" />
+          </g>
+          <use href="#vaso" transform="translate(52 -16)" />
+          <g transform="translate(222 118)">
+            <path
+              d="M-8 34c-38-2-52-30-52-30 38-6 56 12 52 30z"
+              fill="#1f6b3a"
+            />
+            <path d="M8 34c38-2 52-30 52-30-38-6-56 12-52 30z" fill="#17512c" />
+            <circle r="38" fill="#8e0f31" />
+            <circle r="30" fill="#b3123f" />
+            <circle r="21" fill="#d11f55" />
+            <circle r="11" fill="#8e0f31" />
+            <path
+              d="M-5 0a5 5 0 1 1 5 5a11 11 0 1 1-11-11a17 17 0 1 1 17 17"
+              fill="none"
+              stroke="#ff7eb3"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              opacity=".7"
+            />
+          </g>
+        </svg>
         <h2 id="t-rsvp">¿Vienes a cantar?</h2>
         <p>
           Confírmale a Gretel por WhatsApp para que te guarde un lugar en la
@@ -153,7 +360,7 @@
     </main>
 
     <footer>
-      <p>Gretel Ramirez · 24 de octubre · Circo Mexicano</p>
+      <p>Grethel Ramírez · 24 de octubre · El Circo Mexicano</p>
     </footer>
 
     <script src="main.js"></script>

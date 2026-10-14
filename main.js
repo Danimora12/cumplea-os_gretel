@@ -1,7 +1,10 @@
 /* ====== CONFIGURACIÓN: edita solo este bloque ====== */
 const CONFIG = {
   fecha: "2026-10-24T19:30:00-06:00", // Costa Rica (UTC-6)
-  whatsapp: "50687202676", // Número de Gretel: código de país + número, sin + ni espacios
+  whatsapp: "506XXXXXXXX", // Número de Gretel: código de país + número, sin + ni espacios
+  musica: "audio/cancion.mp3", // deja "" para quitar portada y música
+  volumen: 0.5,
+  escena: "img/escena.webp", // ilustración de la sección de WhatsApp (si no existe, se usa el dibujo SVG)
   cumpleanera: "Gretel Ramirez",
   lugar: "El Circo Mexicano",
   mapsCorto: "https://maps.app.goo.gl/JMZvwQEWieqJfEha8",
@@ -44,8 +47,8 @@ if (invitado) nombre.value = invitado.slice(0, 40);
 function actualizarWA() {
   const quien = nombre.value.trim();
   const msg =
-    `¡Hola! ${quien ? "Soy " + quien + ". " : ""}Confirmo mi asistencia a tu  cumpleaños ` +
-    `el sábado 24 de octubre a las 7:30 pm en ${CONFIG.lugar}. ¡Voy de negro y con la voz lista para cantar hasta el amanecer!`;
+    `¡Hola! ${quien ? "Soy " + quien + ". " : ""}Confirmo mi asistencia a tu cumpleaños ` +
+    `el sábado 24 de octubre a las 7:30 pm en ${CONFIG.lugar}. ¡Voy de negro y con la voz lista para el despecho!`;
   $("btn-wa").href =
     `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
 }
@@ -65,3 +68,81 @@ $("btn-gmaps").href = conCoords
 $("btn-waze").href = conCoords
   ? `https://waze.com/ul?ll=${destino}&navigate=yes`
   : `https://waze.com/ul?q=${destino}&navigate=yes`;
+
+/* Portada + música (el navegador solo permite audio tras un toque del usuario) */
+const portada = $("portada"),
+  audio = $("audio"),
+  btnMusica = $("musica");
+
+function estadoMusica(suena) {
+  btnMusica.setAttribute("aria-pressed", String(suena));
+  btnMusica.setAttribute(
+    "aria-label",
+    suena ? "Silenciar música" : "Activar música",
+  );
+}
+function entrar(conMusica) {
+  portada.classList.add("oculta");
+  document.body.classList.remove("bloqueado");
+  setTimeout(() => portada.remove(), 700);
+  if (!conMusica) {
+    btnMusica.hidden = false;
+    estadoMusica(false);
+    return;
+  }
+  audio.volume = CONFIG.volumen;
+  audio
+    .play()
+    .then(() => {
+      btnMusica.hidden = false;
+      estadoMusica(true);
+    })
+    .catch(() =>
+      setTimeout(() => {
+        btnMusica.hidden = !!audio.error;
+        estadoMusica(false);
+      }, 300),
+    );
+}
+
+if (!CONFIG.musica) {
+  portada.remove();
+} else {
+  audio.src = CONFIG.musica;
+  document.body.classList.add("bloqueado");
+  $("entrar").addEventListener("click", () => entrar(true));
+  $("entrar-mudo").addEventListener("click", () => entrar(false));
+  audio.addEventListener("error", () => {
+    btnMusica.hidden = true;
+  });
+  btnMusica.addEventListener("click", () => {
+    if (audio.paused)
+      audio
+        .play()
+        .then(() => estadoMusica(true))
+        .catch(() => {});
+    else {
+      audio.pause();
+      estadoMusica(false);
+    }
+  });
+  let eraSonando = false;
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      eraSonando = !audio.paused;
+      audio.pause();
+    } else if (eraSonando) audio.play().catch(() => {});
+  });
+}
+
+/* Ilustración de la sección RSVP: usa img/escena.webp si existe; si no, queda el SVG */
+const escenaSvg = document.querySelector(".escena");
+if (escenaSvg && CONFIG.escena) {
+  const foto = new Image();
+  foto.onload = () => {
+    foto.className = "escena-foto";
+    foto.alt = "";
+    escenaSvg.replaceWith(foto);
+  };
+  foto.src = CONFIG.escena;
+}
